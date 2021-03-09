@@ -1,4 +1,56 @@
-<body>
 
-<p class="full">hvomepage works!</p>
-</body>
+<div class="container main">
+
+<!-- general logo-->
+<img class="logo" src="/assets/logo-placeholder-image-1.png" >
+
+
+
+<div class="searchbar">
+
+
+</div>
+
+
+
+<div class="filters">
+
+
+</div>
+
+  <ul>
+      <li *ngFor="let item of  arrayOne(4); let i = index">
+        <div class="card">
+          <div class="container">
+            <h4 class="itemTitle" ><b>{{  items[i+ 4*currPage ].customer_name }}</b></h4>
+            <p   class="policyType">Policy type:  {{  items[i+ 4*currPage].policy_type }}</p>
+            <p   class="insurer"   >Insurer:      {{  items[i+ 4*currPage].insurer_name }}</p>
+
+            <p  class="premium" > Premium:   {{  items[i+ 4*currPage].premium }}</p>
+
+              <p  class="itemAddressCity" >City: {{  items[i+ 4*currPage].customer_address_city }}</p>
+              <p  class="itemAddressStreet" >Street: {{  items[i+ 4*currPage].customer_address_street }}</p>
+         
+
+          </div>
+        </div>
+
+      </li>
+     </ul>
+
+
+<div class="pagebar">
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+</div>
