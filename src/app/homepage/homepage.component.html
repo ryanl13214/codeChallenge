@@ -92,8 +92,50 @@
  <!-- main edit end-->
  <div class="addButton" (click)="AddItem()">
    <p style="color:white;margin-top:12px; text-align: center;font-size:20px;">Add New</p>
+
  </div>
  <!-- main AddItem -->
- <div class="addItem" id="AddItem" (click)="AddItem()"> </div>
+ <div class="addItem" id="AddItem" >
+
+
+
+
+
+   <p class="policyTypeFocusedheader" style="">New Customer:</p>
+   <input matInput placeholder="Customer Name "            value="Customer Name"           [(ngModel)]="NewCustomer.Customer_Name" style="display: inline-block;background-color: lightgrey; border-radius:9px; margin-left:20px;margin:2px;">
+   <input matInput placeholder="Customer  street address " value="Customer street address" [(ngModel)]="NewCustomer.Customer_street_address" style="display: inline-block;background-color: lightgrey; border-radius:9px;margin:2px;">
+   <input matInput placeholder="Customer city "            value="Customer city"           [(ngModel)]="NewCustomer.Customer_city" style="display: inline-block;background-color: lightgrey; border-radius:9px; margin-left:20px;margin:2px;">
+
+   <div class="basicbutton"  (click)="SaveCustomer()">
+     <p style="color:white;padding-top:10px; text-align: center;">Save Customer</p>
+   </div>
+
+
+   <p class="policyTypeFocusedheader" style="">New Policy</p>
+   <input matInput placeholder="Customer Name" value="" [(ngModel)]="NewPolicy.Customer_Customer_Name"  style="display: inline-block;background-color: lightgrey; border-radius:9px; margin-left:20px;margin:2px;">
+   <input matInput placeholder="premium"       value="" [(ngModel)]="NewPolicy.premium"                 style="display: inline-block;background-color: lightgrey; border-radius:9px;margin:2px;">
+   <input matInput placeholder="Insurer_Name"  value="" [(ngModel)]="NewPolicy.Insurer_Insurer_Name"    style="display: inline-block;background-color: lightgrey; border-radius:9px; margin-left:20px;margin:2px;">
+   <input matInput placeholder="policy_type"   value="" [(ngModel)]="NewPolicy.policy_type_policy_type" style="display: inline-block;background-color: lightgrey; border-radius:9px;margin:2px;">
+
+   <div class="basicbutton"   (click)="SavePolicy()">
+     <p style="color:white;padding-top:10px; text-align: center;">Save Policy</p>
+   </div>
+
+   <p class="policyTypeFocusedheader" style="">New Policy Type</p>
+   <input matInput placeholder=" " value=" " [(ngModel)]="newPolicy_type" style="display: inline-block;background-color: lightgrey; border-radius:9px; margin-left:20px;margin:2px;">
+
+   <div class="basicbutton"   (click)="SavePolicyType()">
+     <p style="color:white;padding-top:10px; text-align: center;">Save Policy Type</p>
+   </div>
+
+   <p class="policyTypeFocusedheader" style="">New Insurer</p>
+   <input matInput placeholder=" " value=" " [(ngModel)]="newInsurer" style="display: inline-block;background-color: lightgrey; border-radius:9px; margin-left:20px;margin:2px;">
+
+   <div class="basicbutton"   (click)="SaveInsurer()" style=" ">
+     <p style="color:white;padding-top:10px; text-align: center; ">Save Insurer</p>
+   </div>
+
+
+ </div>
  <!-- main AddItem end-->
 </div>
