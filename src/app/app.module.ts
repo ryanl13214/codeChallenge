@@ -10,6 +10,13 @@ import { HomepageComponent } from './homepage/homepage.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSelectModule} from '@angular/material/select';
+
+// services
+import { HttpClientModule } from '@angular/common/http';// for linking with the backend node server
+
+import { HttpModule } from '@angular/http';
+import { SqlapiService } from './sqlapi.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,9 +26,10 @@ import {MatSelectModule} from '@angular/material/select';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatSelectModule
+    MatSelectModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [ SqlapiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
