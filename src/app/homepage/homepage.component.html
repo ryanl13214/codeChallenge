@@ -1,4 +1,4 @@
-
+{{isEdit}}
 <div class="container main">
 
 <!-- general logo-->
@@ -26,11 +26,11 @@
             <p   class="policyType">Policy type:  {{  items[i+ 4*currPage].policy_type }}</p>
             <p   class="insurer"   >Insurer:      {{  items[i+ 4*currPage].insurer_name }}</p>
 
-            <p  class="premium" > Premium:   {{  items[i+ 4*currPage].premium }}</p>
+            <p  class="premium" > Premium:  £{{  items[i+ 4*currPage].premium }}</p>
 
               <p  class="itemAddressCity" >City: {{  items[i+ 4*currPage].customer_address_city }}</p>
               <p  class="itemAddressStreet" >Street: {{  items[i+ 4*currPage].customer_address_street }}</p>
-         
+
 
           </div>
         </div>
@@ -39,12 +39,65 @@
      </ul>
 
 
-<div class="pagebar">
+  <div class="pagebar">
 
 
-</div>
+  </div>
 
 
+
+<!-- main display-->
+  <div class="mainDisplay"  id="Display">
+
+
+      <h4 class="itemTitleFocused" ><b>{{  items[currFocus].customer_name }}</b></h4>
+
+      <p   class="policyTypeFocusedheader">Policy type:</p>
+      <p   class="policyTypeFocused">{{  items[currFocus].policy_type }}</p>
+
+      <p   class="insurerFocusedheader"   >Insurer:  </p>
+      <p   class="insurerFocused"   > {{  items[currFocus].insurer_name }}</p>
+
+      <p  class="premiumFocusedheader" > Premium:    </p>
+      <p  class="premiumFocused" > £{{  items[currFocus].premium }}</p>
+
+      <p  class="itemAddressheader" >Address</p>
+      <p  class="itemAddressCityFocused" > {{  items[currFocus].customer_address_city }}</p>
+      <p  class="itemAddressStreetFocused" > {{  items[currFocus].customer_address_street }}</p>
+
+
+
+      <div class="editButton"   ng-hide="isEdit" (click)="alternateBetweenEditAndDisplay()">
+
+      </div>
+
+      <div class="editButton"  ng-hide="!isEdit" (click)="alternateBetweenEditAndDisplay()">
+
+      </div>
+  </div>
+<!-- main display end-->
+
+
+<!-- main edit -->
+  <div class="editItem"  id="EditItem">
+
+ 
+    <div class="saveButton"  ng-hide="!isEdit" (click)="alternateBetweenEditAndDisplay()">
+
+    </div>
+
+  </div>
+<!-- main edit end-->
+
+
+<!-- main AddItem -->
+  <div class="addItem"  id="AddItem"  (click)="AddItem()">
+
+
+
+
+  </div>
+<!-- main AddItem end-->
 
 
 
