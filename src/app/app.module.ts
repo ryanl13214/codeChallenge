@@ -10,7 +10,8 @@ import { HomepageComponent } from './homepage/homepage.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSelectModule} from '@angular/material/select';
-
+import {MatInputModule} from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
 // services
 import { HttpClientModule } from '@angular/common/http';// for linking with the backend node server
 
@@ -27,7 +28,9 @@ import { SqlapiService } from './sqlapi.service';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatSelectModule,
-    HttpClientModule
+    MatInputModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [ SqlapiService],
   bootstrap: [AppComponent]

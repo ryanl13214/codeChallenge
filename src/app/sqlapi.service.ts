@@ -30,9 +30,25 @@ test:any;
 
  }
 
+ getAllCustomernames( ): Observable<any> {
+     var temp = this.baseUrl+"/getAllCustomernames.php";
 
+         return this.http.get(temp).pipe(
+           map((res) => {
+            return res['data'];
+         }));
 
+}
 
+updatePolicy(pk,customer_Name,policy_type,insurer_Name,premium,customer_address_street,customer_address_city,addresspk): Observable<any> {
+    var temp = this.baseUrl+"/updatePolicy.php?pk="+pk+ "&customer_Name="+customer_Name+ "&policy_type="+policy_type+ "&insurer_Name="+insurer_Name+ "&premium="+premium+ "&customer_address_street="+customer_address_street + "&customer_address_city="+customer_address_city   + "&addresspk="+addresspk                        ;
+
+        return this.http.get(temp).pipe(
+          map((res) => {
+           return res['data'];
+        }));
+
+}
 
 
 

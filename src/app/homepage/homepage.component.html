@@ -1,4 +1,4 @@
-{{test}}
+
 <div class="container main">
 
 <!-- general logo-->
@@ -6,25 +6,22 @@
 
 
 
-<div class="searchbar">
-
-
-</div>
 
 
 
 <div class="filters">
 
 
+
 </div>
 
   <ul>
       <li *ngFor="let item of  arrayOne(4); let i = index">
-        <div class="card">
-          <div class="container">
-            <h4 class="itemTitle" ><b>{{  items[i+ 4*currPage ].customer_name }}</b></h4>
+        <div class="card"  (click)="setFocused(i+ 4*currPage)">
+          <div class="container" >
+            <h4 class="itemTitle" ><b>{{  items[i+ 4*currPage ].Customer_Name }}</b></h4>
             <p   class="policyType">Policy type:  {{  items[i+ 4*currPage].policy_type }}</p>
-            <p   class="insurer"   >Insurer:      {{  items[i+ 4*currPage].insurer_name }}</p>
+            <p   class="insurer"   >Insurer:      {{  items[i+ 4*currPage].Insurer_Name }}</p>
 
             <p  class="premium" > Premium:  £{{  items[i+ 4*currPage].premium }}</p>
 
@@ -40,39 +37,35 @@
 
 
   <div class="pagebar">
-
-
+    <img   style="display: inline-block; height:100%;width:17px;" src="/assets/left.png"   (click)="changepage(1)">
+    <img  style="display: inline-block; height:100%;width:17px;margin-left:20px;" src="/assets/right.png"  (click)="changepage(2)">
   </div>
-
+  <p  style="position:absolute;left:28%;top:82%;">Page:  {{ currPage}}</p>
 
 
 <!-- main display-->
   <div class="mainDisplay"  id="Display">
 
 
-      <h4 class="itemTitleFocused" ><b>{{  items[currFocus].customer_name }}</b></h4>
+    <h4 class="itemTitleFocused" ><b>{{  items[currFocus].Customer_Name }}</b></h4>
 
-      <p   class="policyTypeFocusedheader">Policy type:</p>
-      <p   class="policyTypeFocused">{{  items[currFocus].policy_type }}</p>
+    <p   class="policyTypeFocusedheader">Policy type:</p>
+    <p   class="policyTypeFocused">{{  items[currFocus].policy_type }}</p>
 
-      <p   class="insurerFocusedheader"   >Insurer:  </p>
-      <p   class="insurerFocused"   > {{  items[currFocus].insurer_name }}</p>
+    <p   class="insurerFocusedheader"   >Insurer:  </p>
+    <p   class="insurerFocused"   > {{  items[currFocus].Insurer_Name }}</p>
 
-      <p  class="premiumFocusedheader" > Premium:    </p>
-      <p  class="premiumFocused" > £{{  items[currFocus].premium }}</p>
+    <p  class="premiumFocusedheader" > Premium:    </p>
+    <p  class="premiumFocused" > £{{  items[currFocus].premium }}</p>
 
-      <p  class="itemAddressheader" >Address</p>
-      <p  class="itemAddressCityFocused" > {{  items[currFocus].customer_address_city }}</p>
-      <p  class="itemAddressStreetFocused" > {{  items[currFocus].customer_address_street }}</p>
+    <p  class="itemAddressheader" >Address</p>
+    <p  class="itemAddressCityFocused" > {{  items[currFocus].customer_address_city }}</p>
+    <p  class="itemAddressStreetFocused" > {{  items[currFocus].customer_address_street }}</p>
 
 
-
-      <div class="editButton"   ng-hide="isEdit" (click)="alternateBetweenEditAndDisplay()">
-
-      </div>
 
       <div class="editButton"  ng-hide="!isEdit" (click)="alternateBetweenEditAndDisplay()">
-
+          <p  style="color:white;margin-top:8px; text-align: center;" >Edit</p>
       </div>
   </div>
 <!-- main display end-->
@@ -82,16 +75,92 @@
   <div class="editItem"  id="EditItem">
 
 
-    <div class="saveButton"  ng-hide="!isEdit" (click)="alternateBetweenEditAndDisplay()">
+    <div>
+            <p   class="policyTypeFocusedheader"     style="display: inline-block;" >Customer Name:</p>
 
+
+
+            <input matInput placeholder="{{  items[currFocus].Customer_Name }}" value=  "{{  items[currFocus].Customer_Name }}" [(ngModel)]="CustomerName" style="display: inline-block;background-color: grey; border-radius:9px;">
+
+    </div>
+
+
+
+    <div>
+
+            <p   class="policyTypeFocusedheader"  style="display: inline-block;">Policy type:</p>
+
+
+
+            <input matInput placeholder="{{  items[currFocus].policy_type }}" value=  "{{  items[currFocus].policy_type }}" [(ngModel)]="Policytype" style="display: inline-block;background-color: grey; border-radius:9px;">
+
+    </div>
+
+    <div>
+            <p   class="insurerFocusedheader"    style="display: inline-block;" >Insurer:  </p>
+
+
+                <input matInput placeholder="{{  items[currFocus].Insurer_Name }}" value=  "{{  items[currFocus].Insurer_Name }}" [(ngModel)]="Insurer" style="display: inline-block;background-color: grey; border-radius:9px;">
+
+    </div>
+
+
+    <div>
+            <p  class="premiumFocusedheader"   style="display: inline-block;"> Premium:    </p>
+
+
+
+                <input matInput placeholder="£{{  items[currFocus].premium }}" value=  "{{  items[currFocus].premium }}" [(ngModel)]="Premium" style="display: inline-block;background-color: grey; border-radius:9px;">
+
+    </div>
+
+
+    <div>
+            <p  class="itemAddressheader"  style="display: inline-block;" >Street</p>
+
+
+
+                <input matInput placeholder="{{  items[currFocus].customer_address_street }}" value=  "{{  items[currFocus].customer_address_street }}" [(ngModel)]="Street" style="display: inline-block;background-color: grey; border-radius:9px;">
+
+    </div>
+
+
+
+    <div>
+                  <p  class="itemAddressheader"  style="display: inline-block;" >City</p>
+
+
+
+                      <input matInput placeholder="{{  items[currFocus].customer_address_city }}" value=  "{{  items[currFocus].customer_address_city }}" [(ngModel)]="City" style="display: inline-block;background-color: grey; border-radius:9px;">
+
+
+    </div>
+
+
+
+
+
+
+    <div class="backButton"  ng-hide="!isEdit" (click)="alternateBetweenEditAndDisplay()">
+  <p  style="color:white;margin-top:8px; text-align: center;" >Back</p>
+    </div>
+    <div class="saveButton"  ng-hide="!isEdit" (click)="Save()">
+  <p  style="color:white;margin-top:8px; text-align: center;" >Save</p>
     </div>
 
   </div>
 <!-- main edit end-->
 
 
+
+
+
+<div class="addButton"    (click)="AddItem()">
+  <p  style="color:white;margin-top:12px; text-align: center;" >Add New</p>
+</div>
 <!-- main AddItem -->
   <div class="addItem"  id="AddItem"  (click)="AddItem()">
+
 
 
 
