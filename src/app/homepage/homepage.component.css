@@ -96,15 +96,26 @@ right:-40%;
      border-radius: 20px;
      display: none;
 }
- .addButton{
+.addButton{
+    background-color: maroon;
+    width: 8%;
+    height: 5%;
+    text-align: center;
+    border-radius: 10px;
+    position:absolute;
+    right:20%;
+    top:18%;
+    vertical-align:middle;
+    text-align: center;
+} .addButton2{
      background-color: maroon;
-     width: 8%;
-     height: 5%;
+     width: 11%;
+     height: 7%;
      text-align: center;
      border-radius: 10px;
      position:absolute;
      right:20%;
-     top:18%;
+     top:88%;
      vertical-align:middle;
      text-align: center;
 }
