@@ -22,6 +22,8 @@
      transition: 0.3s;
      width: 40%;
      position:relative;
+        min-width: 500px;
+            min-height: 70px;    
 }
  .editButton{
      background-color: green;
@@ -62,20 +64,26 @@
      top:25%;
      border-radius: 20px;
      display: none;
+     border-width:1px;
+       border-color:grey;
+        border-style: solid;
 }
 
 
 .basicbutton{
 
-  background-color: darkblue;
-  width: 25%;
+  background-color: lightblue;
+  width: 150px;
   height: 6%;
   text-align: center;
   border-radius: 10px;
-
+margin:  0px auto;
+margin-top:10px;
 position:relative;
 right:-40%;
-
+border-width:2px;
+  border-color:grey;
+   border-style: solid;
 }
 
 
@@ -88,23 +96,37 @@ right:-40%;
 
  .addItem{
      width: 30vw;
-     height: 70vh;
+   height: 60vh;
      background-color: white;
      position:absolute;
      right:20%;
      top:25%;
      border-radius: 20px;
      display: none;
+     border-width:1px;
+       border-color:grey;
+        border-style: solid;
 }
- .addButton{
+.addButton{
+    background-color: maroon;
+    width: 8%;
+    height: 5%;
+    text-align: center;
+    border-radius: 10px;
+    position:absolute;
+    right:20%;
+    top:18%;
+    vertical-align:middle;
+    text-align: center;
+} .addButton2{
      background-color: maroon;
-     width: 8%;
-     height: 5%;
+     width: 11%;
+     height: 7%;
      text-align: center;
      border-radius: 10px;
      position:absolute;
      right:20%;
-     top:18%;
+     top:88%;
      vertical-align:middle;
      text-align: center;
 }
@@ -122,9 +144,15 @@ right:-40%;
 }
  .policyTypeFocusedheader{
      height: 3%;
-     margin-top: 10%;
+     margin-top: 5%;
     text-align: center;
-     margin-left: 5%;
+    margin-left: 5%;
+}
+.policyTypeFocusedheaders{
+    height: 3%;
+    margin-top: 3%;
+   text-align: center;
+    margin-left: 5%;
 }
  .policyTypeFocused{
      height: 3%;
@@ -135,8 +163,8 @@ right:-40%;
 }
  .insurerFocusedheader{
      height: 3%;
-     margin-top: 10%;
-     margin-left: 5%;
+     margin-top: 5%;
+     margin-left:  5%;
     text-align: center;
 }
  .insurerFocused{
@@ -148,7 +176,7 @@ right:-40%;
 }
  .premiumFocusedheader{
      height: 3%;
-     margin-top: 10%;
+     margin-top: 5%;
     text-align: center;
      margin-left: 5%;
 }
@@ -161,9 +189,9 @@ right:-40%;
 }
  .itemAddressheader {
      height: 4%;
-     margin-top: 10%;
+     margin-top: 5%;
     text-align: center;
-     margin-left: 5%;
+     margin-left:  5%;
 }
  .itemAddressCityFocused{
      height: 3%;
@@ -180,10 +208,13 @@ right:-40%;
      font-size: 20px;
 }
  .pagebar{
-     margin-top: 4vh;
+   position:absolute;
+   top:80%;
+   left:40%;
+
      width: 4%;
      height: 3%;
-     margin-left: 38%;
+
 }
  .searchbar{
      margin-top: 5px;
@@ -191,6 +222,7 @@ right:-40%;
      height: 28px;
      background-color: lightblue;
      margin-left: 2%;
+
 }
  .filters{
      margin-top: 5px;
@@ -198,6 +230,12 @@ right:-40%;
      height: 6%;
      background-color: lightblue;
      margin-left: 2%;
+
+     border-radius: 10px;
+     border-width:1px;
+       border-color:grey;
+        border-style: solid;
+
 }
  .itemTitle{
      width: 100%;
@@ -209,19 +247,35 @@ right:-40%;
      right:4%;
      top:35%;
 }
+
+.subheader{
+  width: 150px;
+  height: 28px;
+  background-color: lightblue;
+  border-radius: 10px;
+  border-width:1px;
+    border-color:grey;
+     border-style: solid;
+     margin: 15px;
+     text-align:  center;
+}
+
  .itemAddressStreet{
      position:absolute;
      right:4%;
      top:60%;
 }
  .mainDisplay{
-     width: 30vw;
-     height: 60vh;
+   width: 30vw;
+   height: 60vh;
      background-color: white;
      position:absolute;
      right:20%;
      top:25%;
      border-radius: 20px;
+     border-width:1px;
+       border-color:grey;
+        border-style: solid;
 }
  .premium{
      position:absolute;
@@ -245,6 +299,7 @@ right:-40%;
 }
  .container {
      padding: 2px 16px;
+
 }
  .main{
      max-width: 75%;

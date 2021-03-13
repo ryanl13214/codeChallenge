@@ -13,7 +13,7 @@ export class SqlapiService {
 
 
 test:any;
-  baseUrl = 'http://localhost/API';
+  baseUrl = 'http://138.68.154.148/API';
 //baseUrl = 'https://zeno.computing.dundee.ac.uk/2019-projects5
 
    constructor(private http: HttpClient  ) { }
@@ -22,7 +22,7 @@ test:any;
 
   getAllPolicys( ): Observable<any> {
       var temp = this.baseUrl+"/GetFullList.php";
-
+//http://138.68.154.148/API/GetFullList.php
           return this.http.get(temp).pipe(
             map((res) => {
              return res['data'];
