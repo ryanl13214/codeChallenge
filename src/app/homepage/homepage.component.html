@@ -1,5 +1,7 @@
 <div class="container main">
   <!-- general logo-->
+  <!-- element level styles are not a great idea, pixel manipulation gives me the fear. Twitter bootstrap (or similar) is the way to go, pretty industry standard 
+  https://stackoverflow.com/questions/43557321/angular-4-how-to-include-bootstrap -->
   <img class="logo" src="/assets/logo-placeholder.png">
   <div class="filters">
     <p style="display: inline-block;font-size:25px;margin-top: 13px;margin-left: 20px;"> Sort by:
@@ -24,6 +26,7 @@
       <div class="card" (click)="setFocused(i+ 4*currPage)">
         <div class="container">
           <h4 class="itemTitle">
+            <!-- magic numbers ahoy! -->
             <b>{{  items[i+ 4*currPage ].Customer_Name }}
             </b>
           </h4>
@@ -43,6 +46,7 @@
   </ul>
   <!-- list display-->
   <div class="pagebar">
+    
     <img style="display: inline-block; height:100%;width:17px;" src="/assets/left.png" (click)="changepage(1)">
     <img style="display: inline-block; height:100%;width:17px;margin-left:20px;" src="/assets/right.png" (click)="changepage(2)">
   </div>
