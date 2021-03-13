@@ -12,6 +12,7 @@ import
 from '@angular/forms';
 import
 {
+    // odd name, the frontend shouldn't care what is beneath the API (eg if it was re-written using a graph db the JS wouldn't need to care) it's just sending standard HTTP requests. HttpService or ApiService would make more sense to me.
     SqlapiService
 }
 from '../sqlapi.service';
@@ -26,6 +27,7 @@ from '../sqlapi.service';
 export class HomepageComponent implements OnInit
 {
 
+    MAX_ITEMS_PER_PAGE: number = 4;
 
     currFocus: any = 1;
     currPage: any = 0;
@@ -33,6 +35,8 @@ export class HomepageComponent implements OnInit
     isAdd: any = false;
     items: any = [];
     test: any = [];
+    //mixing a bit between naming conventions, I don't care too much about what convention is used
+    //if it is at least self consistent. CitySort and premiumSort, mixing casing.
     CitySort: string = '';
     premiumSort: string = '';
     // variables used for editing current policy
@@ -60,62 +64,71 @@ export class HomepageComponent implements OnInit
     newInsurer: string = "";
     // for use in the lsit list controls how many items are displayed at once max of 4 but
     // at the end of the list displays less to make it clearer when the list eeds.
+
+    // odd method name this, I'd recommend naming it something that states the intent - side note is it even used?
     arrayOne(n: number): any[]
     {
-        if((this.currPage * 4) > this.items.length)
+        // I would put the number 4 to a constant name eg MAX_ITEMS_PER_PAGE. Generally magic numbers should be avoided 
+        // https://codeburst.io/software-anti-patterns-magic-numbers-7bc484f40544
+
+        
+        // this logic looks a bit clumsy, I think it could be refactored
+        if((this.currPage * this.MAX_ITEMS_PER_PAGE) > this.items.length)
         {
-            return Array(Math.abs(this.currPage * 4 - this.items.length));
+            return Array(Math.abs(this.currPage * this.MAX_ITEMS_PER_PAGE - this.items.length));
         }
-        else
-        {
-            var tmp = Math.abs(this.currPage * 4 - this.items.length);
-            if(tmp > 4)
-            {
-                tmp = 4;
-            }
-            return Array(tmp);
-        }
+        // you don't need the else here you return above so if the code executes to here it already is else
+
+        var tmp = Math.abs(this.currPage * this.MAX_ITEMS_PER_PAGE - this.items.length);
+        // terrinary instead?
+        return (tmp > this.MAX_ITEMS_PER_PAGE) ? [this.MAX_ITEMS_PER_PAGE] : [Math.abs(this.currPage *this.MAX_ITEMS_PER_PAGE - this.items.length)];
+        
     }
     setFocused(a)
     {
         this.currFocus = a;
     }
 
+    setElementDisplayStyle(elementName: string, displayStyle: string){
+        document.getElementById(elementName).style.display = displayStyle;
+    }
 
 showHideAdd(i){
 
-
-  var mainDisplay = document.getElementById("Policy_Type").style.display = "none";
-  var mainDisplay = document.getElementById("Policy").style.display = "none";
-  var mainDisplay = document.getElementById("Customer").style.display = "none";
-  var mainDisplay = document.getElementById("Insurer").style.display = "none";
+    // indentation seems to have changed here?
+  // why set the a variable that isn't ever used? Doesn't angular have a show/hide element, surely it does
+  
+  // this could be refactored - an array of items that are looped over. Since the same bit of code is repeated I'd be tempted to pull it into
+  // a shorthand method
+  this.setElementDisplayStyle("Policy_Type","none");
+  this.setElementDisplayStyle("Policy","none");
+  this.setElementDisplayStyle("Customer","none");
+  this.setElementDisplayStyle("Insurer","none");
 
  
+  // if i can only be one value why bother checking other values if 1 is equal? should be a loop over an array but 
+  // even if not, why not a switch?
 
-  if(i == 1)
-  {
-    var mainDisplay = document.getElementById("Policy_Type").style.display = "inline-block";
+  switch(i) {
+    case 1:
+        this.setElementDisplayStyle("Policy_Type","inline-block");
+        break;
+    case 2:
+        this.setElementDisplayStyle("Policy","inline-block");
+        break;
+    case 3:
+        this.setElementDisplayStyle("Customer","inline-block");
+        break;
+    case 4:
+        this.setElementDisplayStyle("Insurer","inline-block");
+        break;
   }
-  if(i == 2)
-  {
-    var mainDisplay = document.getElementById("Policy").style.display = "inline-block";
-  }
-   if(i == 3)
-    {
-      var mainDisplay = document.getElementById("Customer").style.display = "inline-block";
-    }
-    if(i == 4)
-      {
-        var mainDisplay = document.getElementById("Insurer").style.display = "inline-block";
-      }
-
-
 }
 
 
 
 
-
+    // function name? even if it's getPremiumTag it doesn't make sense as it returns a string - not sure
     gerPremiumImg()
     {
         if(this.premiumSort == '')
@@ -135,7 +148,9 @@ showHideAdd(i){
         {
             this.sortByPremium('asc');
             this.premiumSort = 'asc';
-            var mainDisplay = document.getElementById("up").style.display = "inline-block";
+            // same as above, variable not required
+            this.setElementDisplayStyle("up", "inline-block");
+            // aaaaaaaand repeat
             var mainDisplay = document.getElementById("down").style.display = "none";
             var mainDisplay = document.getElementById("net").style.display = "none";
         }
@@ -181,6 +196,7 @@ showHideAdd(i){
         {
             this.sortByAlphabet('asc');
             this.CitySort = 'asc';
+            // you know what I am going to say here ;)
             var mainDisplay = document.getElementById("upc").style.display = "inline-block";
             var mainDisplay = document.getElementById("downc").style.display = "none";
             var mainDisplay = document.getElementById("netc").style.display = "none";
@@ -205,6 +221,7 @@ showHideAdd(i){
     {
         if(direction == "asc")
         {
+            // magic numbers - sorting is a well understood area, I am sure angular will have this otherwise there are libraries like lodash
             for(let i = 0; i < 4; i++)
             {
                 for(let j = 0; j < 4; j++)
@@ -223,6 +240,7 @@ showHideAdd(i){
         }
         if(direction == "dec")
         {
+            // magic numbers
             for(let i = 0; i < 4; i++)
             {
                 for(let j = 0; j < 4; j++)
@@ -313,6 +331,7 @@ showHideAdd(i){
     {
         if(!this.isAdd)
         { // add focused check
+            // again
             var mainDisplay = document.getElementById("Display").style.display = "none";
             var mainDisplay = document.getElementById("AddItem").style.display = "block";
             var mainDisplay = document.getElementById("EditItem").style.display = "none";
