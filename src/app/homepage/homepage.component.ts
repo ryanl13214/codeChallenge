@@ -15,6 +15,8 @@ import
     SqlapiService
 }
 from '../sqlapi.service';
+
+
 @Component(
 {
     selector: 'app-homepage',
@@ -23,47 +25,39 @@ from '../sqlapi.service';
 })
 export class HomepageComponent implements OnInit
 {
+
+
     currFocus: any = 1;
     currPage: any = 0;
     isEdit: any = false;
     isAdd: any = false;
     items: any = [];
     test: any = [];
-CitySort: string = '';
+    CitySort: string = '';
     premiumSort: string = '';
     // variables used for editing current policy
-
+    selectedValue: string;
     CustomerName: string = '';
     Policytype: string = '';
     Insurer: string = '';
     Premium: string = '';
     Street: string = '';
     City: string = '';
-
-
-
-// for adding new items
-NewCustomer: any = {
-Customer_Name:"",
-Customer_street_address:"",
-Customer_city:""
-};
-
-NewPolicy: any = {
-premium:0,
-Customer_Customer_Name:"",
-Insurer_Insurer_Name:"" ,
-Client_Client_Name:"Achme Broker Ltd",
-policy_type_policy_type:""
-};
-
-newPolicy_type: string = '';
-
-newInsurer: string = " sdfsdf";
-
-
-
-
+    // for adding new items
+    NewCustomer: any = {
+        Customer_Name: "",
+        Customer_street_address: "",
+        Customer_city: ""
+    };
+    NewPolicy: any = {
+        premium: 0,
+        Customer_Customer_Name: "",
+        Insurer_Insurer_Name: "",
+        Client_Client_Name: "Achme Broker Ltd",
+        policy_type_policy_type: ""
+    };
+    newPolicy_type: string = '';
+    newInsurer: string = "";
     // for use in the lsit list controls how many items are displayed at once max of 4 but
     // at the end of the list displays less to make it clearer when the list eeds.
     arrayOne(n: number): any[]
@@ -86,6 +80,42 @@ newInsurer: string = " sdfsdf";
     {
         this.currFocus = a;
     }
+
+
+showHideAdd(i){
+
+
+  var mainDisplay = document.getElementById("Policy_Type").style.display = "none";
+  var mainDisplay = document.getElementById("Policy").style.display = "none";
+  var mainDisplay = document.getElementById("Customer").style.display = "none";
+  var mainDisplay = document.getElementById("Insurer").style.display = "none";
+
+ 
+
+  if(i == 1)
+  {
+    var mainDisplay = document.getElementById("Policy_Type").style.display = "inline-block";
+  }
+  if(i == 2)
+  {
+    var mainDisplay = document.getElementById("Policy").style.display = "inline-block";
+  }
+   if(i == 3)
+    {
+      var mainDisplay = document.getElementById("Customer").style.display = "inline-block";
+    }
+    if(i == 4)
+      {
+        var mainDisplay = document.getElementById("Insurer").style.display = "inline-block";
+      }
+
+
+}
+
+
+
+
+
     gerPremiumImg()
     {
         if(this.premiumSort == '')
@@ -125,37 +155,27 @@ newInsurer: string = " sdfsdf";
             var mainDisplay = document.getElementById("net").style.display = "inline-block";
         }
     }
-
-
-
-
-SavePolicyType(){
-  console.log("SavePolicyType");
-  this.sqlapi.SavePolicyType(this.newPolicy_type );
-}
-SaveCustomer(){
-    console.log("SaveCustomer");
-  this.sqlapi.SaveCustomer(this.NewCustomer.Customer_Name ,   this.NewCustomer.Customer_street_address ,     this.NewCustomer.Customer_city      );
-}
-
-SavePolicy(){
-    console.log("SavePolicy");
-  this.sqlapi.SavePolicy(this.NewPolicy.premium,this.NewPolicy.Customer_Customer_Name,this.NewPolicy.Insurer_Insurer_Name,this.NewPolicy.Client_Client_Name,this.NewPolicy.policy_type_policy_type);
-}
-SaveInsurer(){
-    console.log("SaveInsurer");
-  this.sqlapi.SaveInsurer(this.newInsurer);
-}
-
-
-
-
-
-
-
-
+    SavePolicyType()
+    {
+        console.log("SavePolicyType");
+        this.sqlapi.SavePolicyType(this.newPolicy_type);
+    }
+    SaveCustomer()
+    {
+        console.log("SaveCustomer");
+        this.sqlapi.SaveCustomer(this.NewCustomer.Customer_Name, this.NewCustomer.Customer_street_address, this.NewCustomer.Customer_city);
+    }
+    SavePolicy()
+    {
+        console.log("SavePolicy");
+        this.sqlapi.SavePolicy(this.NewPolicy.premium, this.NewPolicy.Customer_Customer_Name, this.NewPolicy.Insurer_Insurer_Name, this.NewPolicy.Client_Client_Name, this.NewPolicy.policy_type_policy_type);
+    }
+    SaveInsurer()
+    {
+        console.log("SaveInsurer");
+        this.sqlapi.SaveInsurer(this.newInsurer);
+    }
     sortCity()
-
     {
         if(this.CitySort == '')
         {
@@ -221,26 +241,24 @@ SaveInsurer(){
         }
         console.log(JSON.stringify(this.items));
     }
-
     sortByAlphabet(direction)
     {
-      if(direction == "asc")
-      {
-
-      this.items.sort(function (a, b) {
-       return a.customer_address_city.length - b.customer_address_city.length;
-     });
-}else{
-  this.items.sort(function (a, b) {
-   return b.customer_address_city.length - a.customer_address_city.length;
- });
-}
-
-
-
-   console.log(  this.items);
+        if(direction == "asc")
+        {
+            this.items.sort(function(a, b)
+            {
+                return a.customer_address_city.length - b.customer_address_city.length;
+            });
+        }
+        else
+        {
+            this.items.sort(function(a, b)
+            {
+                return b.customer_address_city.length - a.customer_address_city.length;
+            });
+        }
+        console.log(this.items);
     }
-
     constructor(private sqlapi: SqlapiService)
     {}
     public screenWidth: any;
@@ -269,6 +287,26 @@ SaveInsurer(){
     {
         var pk = this.items[this.currFocus].PolicyPK;
         var addresspk = this.items[this.currFocus].address_PK;
+        if(this.CustomerName == "")
+        {
+            this.CustomerName = this.items[this.currFocus].Customer_Customer_Name;
+        }
+        if(this.Premium == "")
+        {
+            this.Premium = this.items[this.currFocus].premium;
+        }
+        if(this.CustomerName == "")
+        {
+            this.CustomerName = this.items[this.currFocus].Customer_Customer_Name;
+        }
+        if(this.Insurer == "")
+        {
+            this.Insurer = this.items[this.currFocus].Insurer_Insurer_Name;
+        }
+        if(this.Policytype == "")
+        {
+            this.Policytype = this.items[this.currFocus].policy_type_policy_type;
+        }
         this.sqlapi.updatePolicy(pk, this.CustomerName, this.Policytype, this.Insurer, this.Premium, this.Street, this.City, addresspk);
     }
     AddItem()
@@ -299,6 +337,7 @@ SaveInsurer(){
         {
             var mainDisplay = document.getElementById("Display").style.display = "block";
             var mainDisplay = document.getElementById("EditItem").style.display = "none";
+            var mainDisplay = document.getElementById("AddItem").style.display = "none";
         }
         this.isEdit = !this.isEdit;
     }
