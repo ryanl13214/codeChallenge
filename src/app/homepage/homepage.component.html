@@ -2,17 +2,17 @@
   <!-- general logo-->
   <img class="logo" src="/assets/logo-placeholder.png">
   <div class="filters">
-    <p style="display: inline-block;font-size:25px;margin-top: 10px;"> Sort by:
+    <p style="display: inline-block;font-size:25px;margin-top: 13px;margin-left: 20px;"> Sort by:
     </p>
     <div  style="display: inline-block; height:100%;text-align: center;margin-left:10px;margin-top:15px;">
-      <p style="display: inline-block;"> Premium:
+      <p style="display: inline-block;margin-left: 20px;"> Premium:
       </p>
       <img id="up"  style="  height:13px;;width:17px; position:relative; left:0px;display:none;" src="/assets/up.png" (click)="sortPremium()">
       <img id="down"  style="  height:13px;;width:17px; position:relative; left:0px;display:none;" src="/assets/down.png" (click)="sortPremium()">
       <img id="net"  style="  height:13px;;width:17px; position:relative; left:0px;display:inline-block;" src="/assets/net.png" (click)="sortPremium()">
     </div>
     <div  style="display: inline-block; height:100%;text-align: center;margin-left:10px;margin-top:15px;">
-      <p style="display: inline-block;"> Area:
+      <p style="display: inline-block;margin-left: 20px;"> Area:
       </p>
       <img id="upc"  style="  height:13px;;width:17px; position:relative; left:0px;display:none;" src="/assets/up.png" (click)="sortCity()">
       <img id="downc"  style="  height:13px;;width:17px; position:relative; left:0px;display:none;" src="/assets/down.png" (click)="sortCity()">
@@ -80,35 +80,41 @@
   <!-- main display end-->
   <!-- main edit -->
   <div class="editItem" id="EditItem">
-    <div>
-      <p class="policyTypeFocusedheader" style="display: inline-block;">Customer Name:
+
+    <h4 class="itemTitleFocused">
+      <b>Edit current item
+      </b>
+    </h4>
+
+    <div >
+      <p class="policyTypeFocusedheader" style="display: inline-block;margin-left:10%;">Customer Name:
       </p>
-      <input matInput placeholder="{{  items[currFocus].Customer_Name }}" value="{{  items[currFocus].Customer_Name }}" [(ngModel)]="CustomerName" style="display: inline-block;background-color: grey; border-radius:9px;">
+      <input matInput placeholder="{{  items[currFocus].Customer_Name }}" value="{{  items[currFocus].Customer_Name }}" [(ngModel)]="CustomerName" style="margin-left:5%;display: inline-block;background-color: grey; border-radius:9px;">
     </div>
     <div>
-      <p class="policyTypeFocusedheader" style="display: inline-block;">Policy type:
+      <p class="policyTypeFocusedheader" style="display: inline-block;margin-left:10%;">Policy type:
       </p>
-      <input matInput placeholder="{{  items[currFocus].policy_type }}" value="{{  items[currFocus].policy_type }}" [(ngModel)]="Policytype" style="display: inline-block;background-color: grey; border-radius:9px;">
+      <input matInput placeholder="{{  items[currFocus].policy_type }}" value="{{  items[currFocus].policy_type }}" [(ngModel)]="Policytype" style="margin-left:5%;display: inline-block;background-color: grey; border-radius:9px;">
     </div>
     <div>
-      <p class="insurerFocusedheader" style="display: inline-block;">Insurer:
+      <p class="insurerFocusedheader" style="display: inline-block;margin-left:10%;">Insurer:
       </p>
-      <input matInput placeholder="{{  items[currFocus].Insurer_Name }}" value="{{  items[currFocus].Insurer_Name }}" [(ngModel)]="Insurer" style="display: inline-block;background-color: grey; border-radius:9px;">
+      <input matInput placeholder="{{  items[currFocus].Insurer_Name }}" value="{{  items[currFocus].Insurer_Name }}" [(ngModel)]="Insurer" style="margin-left:5%;display: inline-block;background-color: grey; border-radius:9px;">
     </div>
     <div>
-      <p class="premiumFocusedheader" style="display: inline-block;"> Premium:
+      <p class="premiumFocusedheader" style="display: inline-block;margin-left:10%;"> Premium:
       </p>
-      <input matInput placeholder="£{{  items[currFocus].premium }}" value="{{  items[currFocus].premium }}" [(ngModel)]="Premium" style="display: inline-block;background-color: grey; border-radius:9px;">
+      <input matInput placeholder="£{{  items[currFocus].premium }}" value="{{  items[currFocus].premium }}" [(ngModel)]="Premium" style="margin-left:5%;display: inline-block;background-color: grey; border-radius:9px;">
     </div>
     <div>
-      <p class="itemAddressheader" style="display: inline-block;">Street
+      <p class="itemAddressheader" style="display: inline-block;margin-left:10%;">Street
       </p>
-      <input matInput placeholder="{{  items[currFocus].customer_address_street }}" value="{{  items[currFocus].customer_address_street }}" [(ngModel)]="Street" style="display: inline-block;background-color: grey; border-radius:9px;">
+      <input matInput placeholder="{{  items[currFocus].customer_address_street }}" value="{{  items[currFocus].customer_address_street }}" [(ngModel)]="Street" style="margin-left:5%;display: inline-block;background-color: grey; border-radius:9px;">
     </div>
     <div>
-      <p class="itemAddressheader" style="display: inline-block;">City
+      <p class="itemAddressheader" style="display: inline-block;margin-left:10%;">City
       </p>
-      <input matInput placeholder="{{  items[currFocus].customer_address_city }}" value="{{  items[currFocus].customer_address_city }}" [(ngModel)]="City" style="display: inline-block;background-color: grey; border-radius:9px;">
+      <input matInput placeholder="{{  items[currFocus].customer_address_city }}" value="{{  items[currFocus].customer_address_city }}" [(ngModel)]="City" style="margin-left:5%;display: inline-block;background-color: grey; border-radius:9px;">
     </div>
     <div class="backButton" ng-hide="!isEdit" (click)="alternateBetweenEditAndDisplay()">
       <p style="color:white;margin-top:8px; text-align: center;">Back
